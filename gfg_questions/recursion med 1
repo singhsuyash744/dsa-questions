@@ -1,0 +1,37 @@
+/* ques link
+https://www.geeksforgeeks.org/problems/recursively-remove-all-adjacent-duplicates0744/1
+/*
+
+SOLN=>
+class Solution {
+    public String removeUtil(String s) {
+
+        StringBuilder temp = new StringBuilder();
+        int i = 0;
+
+        while (i < s.length()) {
+
+            if (i < s.length() - 1 &&
+                s.charAt(i) == s.charAt(i + 1)) {
+
+                char ch = s.charAt(i);
+
+                while (i < s.length() &&
+                       s.charAt(i) == ch) {
+                    i++;
+                }
+            } else {
+                temp.append(s.charAt(i));
+                i++;
+            }
+        }
+
+        String reduced = temp.toString();
+
+        if (reduced.length() == s.length()) {
+            return reduced;
+        }
+
+        return removeUtil(reduced);
+    }
+}
